@@ -1,0 +1,25 @@
+{
+  "name": "senseit-winesense-react",
+  "version": "1.0.0",
+  "description": "Winecellar implementation of senseit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/anders462/SenseIt-Wine-Cellar-React.git"
+  },
+  "keywords": [
+    "IoT",
+    "sensors",
+    "wine",
+    "cellar"
+  ],
+  "author": "Anders Bengtsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anders462/SenseIt-Wine-Cellar-React/issues"
+  },
+  "homepage": "https://github.com/anders462/SenseIt-Wine-Cellar-React#readme"
+}
