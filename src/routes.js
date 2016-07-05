@@ -10,6 +10,7 @@ import Register from './components/register';
 import Logout from './components/logout';
 import Resources from './components/resources';
 import Home from './components/home';
+import requireAuthentication from './components/hoc_components/require_authentication';
 
 
 
@@ -19,7 +20,7 @@ export default (
   <Route path='about' component={About} />
   <Route path="contact" component={Contact} />
   <Route path="resources" component={Resources} />
-  <Route path="dashboard" component={Dashboard} />
+  <Route path="dashboard" component={ requireAuthentication(Dashboard) } />
   <Route path="login" component={Login} />
   <Route path="register" component={Register} />
   <Route path="logout" component={Logout} />
