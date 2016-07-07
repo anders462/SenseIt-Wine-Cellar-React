@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import Header from './header';
+
 
 export default class App extends Component {
 
@@ -13,8 +15,8 @@ export default class App extends Component {
   render() {
       console.log(this.context);
     return (
-      <div>
-        <h3>WineSense</h3>
+      <div className="">
+        <Header />
         {this.props.children}
       </div>
     )

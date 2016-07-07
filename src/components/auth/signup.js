@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 
-export default class Logout extends Component {
+export default class SignUp extends Component {
 
   render() {
 
     return (
-      <div>Logout</div>
+      <div>Register</div>
     )
   }
 }
