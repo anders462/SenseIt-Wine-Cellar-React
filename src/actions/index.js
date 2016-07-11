@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER } from './types';
+import {
+  AUTH_USER,
+  UNAUTH_USER,
+  AUTH_ERROR } from './types';
 
-const API_URL = 'http://localhost:8001';
+export const API_URL = 'http://localhost:8001';
 
 export function signinUser({username,password}){
   //redux-thunk enable us to return a function with
@@ -15,19 +18,45 @@ export function signinUser({username,password}){
        //update state to authenicated by
        //passing action to reducers
        dispatch({ type: AUTH_USER});
+       //save jwt token (dont store in state)
+       localStorage.setItem('token', response.data.token)
        //redirect to /dashboard
        browserHistory.push('/dashboard');
      })
      .catch((error) => {
-       dispatch
+       //if request is bad
+       //show error message
+       console.log(error)
+       dispatch(authError(error.data.err.message));
+
      });
   }
 
 }
 
+export function signupUser(creds){
+  return function(dispatch){
+    axios.post(`${API_URL}/users/register`,creds)
+      .then( (response) => {
+        browserHistory.push('/signin');
+      })
+      .catch((error) => {
+        dispatch(authError(error.data.err.message));
+      });
 
-//save jwt token (dont store in state)
 
+  }
 
-//if request is breadcrumb
-//show error message
+}
+
+export function authError(error){
+  return {
+    type: AUTH_ERROR,
+    payload: error
+  };
+};
+
+export function signoutUser(){
+  localStorage.removeItem('token');
+  return { type: UNAUTH_USER };
+}

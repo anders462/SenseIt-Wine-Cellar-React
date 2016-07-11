@@ -1,10 +1,24 @@
 
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import { Link } from 'react-router';
 
 
 class  Header extends Component {
 
+
+renderLinks(){
+  if (this.props.authenticated){
+    return (
+        <li><Link to='/signout'><span className="glyphicon glyphicon-log-out"></span> Sign Out</Link></li>
+    )
+  } else {
+    return [
+          <li key={1}><Link to='/signin'><span className="glyphicon glyphicon-log-in"></span> Sign In</Link></li>,
+          <li key={2}><Link to='/signup'><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li>
+          ];
+  }
+};
 
 render(){
   return (
@@ -27,9 +41,8 @@ render(){
             <li><Link to='/dashboard'><i className="fa fa-tachometer" aria-hidden="true"></i> Dashboard</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li><Link to='/signout'><span className="glyphicon glyphicon-log-out"></span> Sign Out</Link></li>
-            <li><Link to='/signin'><span className="glyphicon glyphicon-log-in"></span> Sign In</Link></li>
-          </ul>
+           {this.renderLinks()}
+         </ul>
         </div>
       </div>
     </nav>
@@ -42,4 +55,8 @@ render(){
 
 }
 
-export default Header;
+function mapStateToProps(state){
+  return { authenticated: state.auth.authenticated }
+};
+
+export default connect(mapStateToProps)(Header);

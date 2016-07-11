@@ -1,6 +1,21 @@
-.signin {
+.signin, .signup {
   border: solid 1px #ddd;
   max-width: 500px;
   padding: 40px;
   margin:auto;
+}
+
+
+.error {
+  color:red;
+}
+
+
+.formFadeIn-appear {
+  opacity: 0.01;
+}
+
+.formFadeIn-appear.formFadeIn-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }

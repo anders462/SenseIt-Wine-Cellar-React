@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import Header from './header';
+import Header from './common/header';
 
 
 export default class App extends Component {
